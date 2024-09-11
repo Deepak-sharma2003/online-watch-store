@@ -1,0 +1,97 @@
+/* Reset some default styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e0e0e0; /* Slightly darker background for contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 15px; /* Added padding for small screens */
+}
+
+/* Container styling */
+.container {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+    padding: 30px;
+    text-align: center;
+}
+
+/* Profile picture styling */
+.profile-pic {
+    width: 120px; /* Slightly larger profile picture */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #007bff; /* Adding a border to make it stand out */
+    margin-bottom: 20px;
+}
+
+/* Username styling */
+.username {
+    font-size: 28px; /* Larger font size for emphasis */
+    color: #333;
+    font-weight: 600; /* Slightly bolder text */
+    margin-bottom: 10px;
+}
+
+/* Email styling */
+.email {
+    font-size: 18px; /* Slightly larger font size */
+    color: #555; /* Slightly darker color for better readability */
+    margin-bottom: 20px;
+}
+
+/* Logout button styling */
+.logout-btn {
+    display: inline-block;
+    background-color: #ff4b5c; /* Eye-catching color */
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase; /* Make text uppercase */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.logout-btn:hover {
+    background-color: #e04350; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px; /* Adjust padding for small screens */
+    }
+    
+    .profile-pic {
+        width: 100px; /* Reduce size of profile picture */
+        height: 100px;
+    }
+
+    .username {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+
+    .email {
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+
+    .logout-btn {
+        font-size: 14px; /* Adjust button text size */
+        padding: 8px 16px; /* Adjust button padding */
+    }
+}
