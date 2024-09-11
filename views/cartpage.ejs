@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Watch Store</title>
+    <link rel="stylesheet" href="/css/cartpage.css">
+</head>
+<body>
+    <header>
+        <h1>Watch Store</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/page/cart">Cart</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="cart-container">
+            <h2>Your Cart</h2>
+            
+            <% watches.forEach((watch) => { %>
+                <div class="product-row">
+                    <div class="product-image">
+                        <!-- Assuming watch.img is the image URL -->
+                        <img src="/css/images/<%= watch.img %>" alt="Product Image">
+                    </div>
+                    <div class="product-info">
+                        <p>Watch Name: <%= watch.name %></p>
+                        <p>Price: $<%= watch.price %></p>
+                        <p>Qty: <%= watch.quantity %></p>
+                        <p>Des.: <%= watch.description %></p>
+                        <div class="innerdiv">
+                            <a class='remove-item' data-img="<%= watch.img %>">Remove Item</a>
+                            <input type="text" class="quantity-input" placeholder="Enter Qty here !!">
+                            <a class='update-qty' data-img="<%= watch.img %>">Update qty</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+            
+            <div class="cart-summary">
+                <p id="cart-total">Total: $<span id="total"><%= total %></span></p>
+                <form action="/page/payment" method="GET">
+                    <button id="checkout-btn" type="submit" name="total" value="<%= total %>">Checkout</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Handle clicks on remove-item links
+        document.addEventListener('click', function(event) {
+            if (event.target && event.target.classList.contains('remove-item')) {
+                //event.target refers to the specific element that triggered the event. 
+                //For example, if a user clicks on a button, event.target is the button element.
+                //event.target.classList.contains('update-qty') checks if the clicked element has the class update-qty or not.
+               
+                const watchimg = event.target.getAttribute('data-img');
+                console.log('Watch Image ID:', watchimg);
+
+                fetch('/page/remove', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({"watchimage": watchimg})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Item removed successfully!');
+                        window.location.reload();
+                    } else {
+                        alert('Failed to remove item.');
+                    }
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                    alert('An error occurred.');
+                });
+            }
+        });
+
+        // Handle clicks on update-qty links
+        document.addEventListener('click', function(event) {
+            if (event.target && event.target.classList.contains('update-qty')) {
+                //event.target refers to the specific element that triggered the event. 
+                //For example, if a user clicks on a button, event.target is the button element.
+                //event.target.classList.contains('update-qty') checks if the clicked element has the class update-qty or not.
+
+                const watchimg = event.target.getAttribute('data-img');
+                const qty = event.target.previousElementSibling.value; // Get the value from the previous sibling input
+
+                console.log("Qty:", qty);
+
+                fetch('/page/updateqty', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({"watchimage": watchimg, "qty": qty})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Qty updated!');
+                        window.location.reload();
+                    } else {
+                        alert('Failed to update qty.');
+                    }
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                    alert('An error occurred.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

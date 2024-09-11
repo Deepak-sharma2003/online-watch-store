@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Description</title>
+    <link rel="stylesheet" href="/css/watch_desc.css">
+</head>
+<body>
+    <header>
+        <h1>Watch Details</h1>
+    </header>
+    <div class="container">
+        <div class="image-details">
+            <img src="/css/images/<%= watch.img %>" alt="Watch Image">
+        </div>
+        <div class="info-details">
+            <h2><%= watch.name %></h2>
+            <p class="price"><%= watch.price %> -/rs</p>
+            <p class="description"><%= watch.description %></p>
+            <a href="/addwatch/<%= watch.id%>"><button class="add-to-cart">Add to Cart</button></a>
+        </div>
+    </div>
+</body>
+</html>

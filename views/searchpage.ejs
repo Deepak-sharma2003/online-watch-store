@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Store</title>
+    <link rel="stylesheet" href="/css/searchpage.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Watch Store</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/page/contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+            <div class="search-section">
+                
+                <form action="/page/searchitem" method="get">
+                    <input type="text" id="search" name="search" placeholder="Search for watches...">
+                    <button type="submit" id="search-button">Search</button>
+                </form>
+                <% if (watches && watches.length > 0) { %>
+                    <% watches.forEach((watch) => { %>
+                        <div class="product-item">
+                            <a href="/watch/<%= watch.id %>">
+                                <img src="/css/images/<%= watch.img %>" alt="Watch Image">
+                            </a>
+                            <p class="price"><%= watch.price %> -/rs</p>
+                            <p class="price"><%= watch.description %> -/rs</p>
+                            <a href="/watch/<%= watch.id%>"><button class="add-to-cart">View Details</button></a>
+                        </div>
+                    <% }); %>
+                <% } %>
+                
+            </div>
+
+    </main>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Watch Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

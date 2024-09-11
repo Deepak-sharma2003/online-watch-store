@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Watch Store</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login to Watch Store</h2>
+        <form action="/page/verifyuser" onsubmit="return check_key()" method="post">
+            
+            <label for="a"><input type="radio" id="admin" name="person" value="admin" onclick="checkperson()" required>Admin</label>
+            <label for="u"><input type="radio" id="user" name="person" value="user" onclick="checkperson()" required>user</label>
+
+            <br>
+            <div id="secret_key" style="display:none;">
+                <label for="sk" >Secret Key:</label>
+                <input type="password" id="sk" name="secret_key" oninput="check_mykey()">
+                <p id="inv_msg" style="color:red; font-size:15px; display:none;">Invalid secret key</p>
+            </div>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <a href="/page/forgot_pass" style="color:blue; font-size:10px; text-align:center; ">Forgot Paasword ?</a>
+            
+            <div id="mydiv"><div>New user?</div><a href="/page/signup">Register Here</a></div>
+            <hr>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+
+<script>
+    //function to show secret key msg if admin then show else not.
+    function checkperson()
+    {
+        if(admin.checked)
+        {
+           secret_key.style.display = 'block';
+        }
+        if(user.checked)
+        {
+           secret_key.style.display = 'none';
+        }
+    }
+    //function to check and show invalid msg.
+    function check_mykey()
+    {
+
+        if(sk.value != "25752575")
+        {
+            inv_msg.style.display = 'block';
+        }
+        else{
+            inv_msg.style.display = 'none';
+        }
+    }
+    async function check_key()
+    {
+        if(admin.checked)
+        {
+            if(sk.value != "25752575")
+            {
+                inv_msg.style.display = 'block';
+                event.preventDefault(); //this is used to return or stops form submission.
+                return false;
+            }
+            else{
+                inv_msg.style.display = 'none';
+                return true;
+            }
+        }
+        else
+        {
+            //console.log("hello");
+            return true;
+        }
+    }
+</script>    
+</html>

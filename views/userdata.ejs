@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/css/userdata.css">
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <img src="/css/images/profilepic.jfif" alt="Profile Picture" class="profile-pic">
+            <% if(name) {%>
+                <h1 class="username">Hello <%= name %></h1>
+            <%}%>
+            <% if(! name) {%>
+                <h1 class="username"></h1>
+            <%}%>
+            <% if(email) {%>
+                <p class="email"><%= email %></p>
+            <%}%>
+            <% if(!email) {%>
+                <p class="email"></p>
+            <%}%>
+            <a href="/logout"><button class="logout-btn">Logout</button></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <link rel="stylesheet" href="/css/admin_watch_store.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/fcc432f36e.js" crossorigin="anonymous"></script>
+    <title>Online Watch Store</title>
+</head>
+<body>
+    <div id="div1">
+        <div class="div_1_1"></div>
+        <div class="div_2_1">
+            <ul id="unl">
+                <li id="li"><a href="/">Home</a></li>
+                <li id="li"><a href="/page/contact">Contact</a></li>
+                <li id="li"><a href="/page/shop">Shop</a></li>
+                <li id="li"><a href="/page/login">Login</a></li>
+                <li id="li"><a href="/page/add_product">Add Watch</a></li>
+            </ul>
+        </div>
+        <div class="div_3_1">
+            <a href="/page/search"><button style="border:none"><i style="cursor:pointer;" class="fa-solid fa-magnifying-glass"></i></button></a>
+            <a href="/page/cart"><button style="border:none"><i style="cursor:pointer;" class="fa-solid fa-cart-shopping"></i></button></a>
+            <a href="/page/userpage"><button style="border:none"><i style="cursor:pointer;" class="fas fa-user-circle profile-icon"></i></button></a>
+        </div>
+    </div>
+    <div class="div2">
+        <br><br><br><br><br><br>
+        <h1>Select Your New</h1>
+        <h1>Perfect Style</h1>
+        <p>Lorem ispum dolor set amet, consecuter eit. Bioanaditics prospectives<br>representation id beaten accumaloors..</p>
+        <a href="/page/shop"><button class="btn1">Shop Now</button></a>
+    </div>
+    <br><br>
+    <h1 id="h1_1">Popular Items</h1>
+    <div class="container">
+        <div class="product">      
+            <% watches.forEach((watch, index) => { %>
+                <div class="product-item">
+                    <a href="/watches/<%= watch.id%>"><img style="width:200px; height:200px;" src="/css/images/<%= watch.img %>" alt="Watch Image"></a>
+                    <p><%= watch.name %></p>
+                    <p class="price"><%= watch.price %> -/rs</p>
+                    <a href="/watches/<%= watch.id%>">
+                        <button class="add-to-cart">View Details</button>
+                    </a>
+                </div>
+                <% })
+            %>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br><br>
+
+    <h1 style="text-align:center;">Visit us at Google Maps</h1>
+    <div class="gmaps">
+        <a href="https://www.google.com/maps/search/online+watch+store+locations/@30.1525466,77.250548,12z/data=!3m1!4b1?entry=ttu"><img src="/css/images/gmaps.jfif"></a>
+        <a href="https://www.google.com/maps/search/online+watch+store+locations/@30.1525466,77.250548,12z/data=!3m1!4b1?entry=ttu"><button>Visit Us</button></a>
+    </div>
+
+    <br><br><br><br><br>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about-us">
+                <h2>About Us</h2>
+                <p>We are passionate about watches and offer a wide selection of timepieces to fit every style and budget.</p>
+            </div>
+            <div class="footer-section quick-links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a style="color:white" href="/">Home</a></li>
+                    <li><a style="color:white" href="/page/shop">Shop</a></li>
+                    <li><a style="color:white" href="/page/login">Login</a></li>
+                    <li><a style="color:white" href="/page/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact-us">
+                <h2>Contact Us</h2>
+                <p>Email: support@watchstore.com</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+            <div class="footer-section social-media">
+                <h2>Follow Us</h2>
+                <ul>
+                    <li><a style="color:white" href="#facebook">Facebook</a></li>
+                    <li><a style="color:white" href="#instagram">Instagram</a></li>
+                    <li><a style="color:white" href="#Whatsapp">Whatsapp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 WatchStore. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Watch Store</title>
+    <script src="https://kit.fontawesome.com/fcc432f36e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/shoppage.css">
+    <script src="/shoppage.js"></script>
+</head>
+<body>
+    <div id="div1">
+        <div class="div_1_1"></div>
+        <div class="div_2_1">
+            <ul id="unl">
+                <li id="li"><a href="/">Home</a></li>
+                <li id="li"><a href="/page/contact">Contact</a></li>
+                <li id="li"><a href="/page/shop">Shop</a></li>
+                <li id="li"><a href="/page/login">Login</a></li>
+            </ul>
+        </div>
+        <div class="div_3_1">
+            <a href="/page/search"><button style="border:none"><i style="cursor:pointer;" class="fa-solid fa-magnifying-glass"></i></button></a>
+            <a href="/page/cart"><button style="border:none"><i style="cursor:pointer;" class="fa-solid fa-cart-shopping"></i></button></a>
+            <a href="/page/userpage"><button style="border:none"><i style="cursor:pointer;" class="fas fa-user-circle profile-icon"></i></button></a>
+        </div>
+    </div>
+    <h1 id="h1_2">Choose Your Style</h1>
+    <div class="div2">
+        <ul id="unl">
+            <li id="li"><a href="#0">All Watches</a></li>
+            <li id="li"><a href="#1">Men</a></li>
+            <li id="li"><a href="#2">Women</a></li>
+            <li id="li"><a href="#3">Child</a></li>
+        </ul>
+    </div>
+
+
+    <div class="container">
+        <div class="product">      
+            <% 
+            // Define an array of headings
+            const headings = [
+                "All watches",
+                "Men's Collection",
+                "Womens's Collection",
+                "Child Collection",
+                "Other Popular Watches"
+            ];
+        
+             let myid=0;
+            %>
+
+            <% watches.forEach((watch, index) => { %>
+                <% if (index % 6 === 0 ) { %>
+                    <!-- Add a unique heading after every second row (6 items) -->
+                    <div class="section-heading">
+                        <h1 id="<%= myid %>"><%= headings[myid % headings.length] %></h1>
+                    </div>
+                    <% myid++; %>
+                <% } %>
+                <div class="product-item">
+                    <a href="/watch/<%= watch.id%>"><img style="width:200px; height:200px;" src="/css/images/<%= watch.img %>" alt="Watch Image"></a>
+                    <p class="name"><%= watch.name %></p>
+                    <p class="price"><%= watch.price %> -/rs</p>
+                    <a href="/watch/<%= watch.id%>"><button class="add-to-cart">View Details</button></a>
+                </div>
+                <% })
+            %>
+        </div>
+    </div>
+
+
+    <br><br>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about-us">
+                <h2>About Us</h2>
+                <p>We are passionate about watches and offer a wide selection of timepieces to fit every style and budget.</p>
+            </div>
+            <div class="footer-section quick-links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a style="color:white" href="/">Home</a></li>
+                    <li><a style="color:white" href="/page/shop">Shop</a></li>
+                    <li><a style="color:white" href="/page/login">Login</a></li>
+                    <li><a style="color:white" href="/page/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact-us">
+                <h2>Contact Us</h2>
+                <p>Email: support@watchstore.com</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+            <div class="footer-section social-media">
+                <h2>Follow Us</h2>
+                <ul>
+                    <li><a style="color:white" href="#facebook">Facebook</a></li>
+                    <li><a style="color:white" href="#instagram">Instagram</a></li>
+                    <li><a style="color:white" href="#Whatsapp">Whatsapp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 WatchStore. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
